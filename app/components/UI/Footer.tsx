@@ -10,7 +10,7 @@ export const Footer: React.FC<IFooterProps> = props => {
           <div className="col-12">
             <div className="footer__content">
               <a href="index.html" className="footer__logo">
-                <img src="img/logo.svg" alt="" />
+                <img src="/img/logo.png" alt="Logo" />
               </a>
 
               <nav className="footer__nav">

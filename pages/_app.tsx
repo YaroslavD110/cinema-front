@@ -1,14 +1,17 @@
 import * as React from "react";
 import NextApp, { AppContext } from "next/app";
 import { Provider } from "mobx-react";
+import Nprogress from "nprogress";
+import Router from "next/router";
 
 // Stores
 import stores from "@app/stores";
 
 // Styles
-import "@app/assets/styles/main.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "nprogress/nprogress.css";
+import "@app/assets/styles/main.scss";
 
 import "isomorphic-fetch";
 
@@ -23,6 +26,12 @@ export class App extends NextApp<IAppProps> {
     }
 
     return { pageProps };
+  }
+
+  componentDidMount() {
+    Router.events.on("routeChangeStart", Nprogress.start);
+    Router.events.on("routeChangeComplete", Nprogress.done);
+    Router.events.on("routeChangeError", Nprogress.done);
   }
 
   public render() {

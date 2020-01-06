@@ -15,7 +15,7 @@ export const Header: React.FC<IHeaderProps> = props => {
             <div className="header__content">
               <Link href="/" as="/">
                 <a className="header__logo">
-                  <img src="/img/logo.svg" alt="Logo" />
+                  <img src="/img/logo.png" alt="Logo" />
                 </a>
               </Link>
 

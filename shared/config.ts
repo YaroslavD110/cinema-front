@@ -10,5 +10,9 @@ export const headerMenu: {
   {
     title: "Home",
     href: "/"
+  },
+  {
+    title: "Catalog",
+    href: "/films"
   }
 ];

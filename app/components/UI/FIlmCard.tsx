@@ -6,13 +6,14 @@ interface IFilmCardProps {
   preview: string;
   rating: number;
   slug: string;
+  bigCard?: boolean;
 }
 
 export const FilmCard: React.FC<IFilmCardProps> = props => {
-  const { title, preview, rating, slug } = props;
+  const { title, preview, rating, slug, bigCard } = props;
 
   return (
-    <div className="card card--big">
+    <div className={`card${bigCard ? " card--big" : ""}`}>
       <div className="card__cover">
         <img src={preview} alt={title} />
         <Link href="/films/[slug]" as={`/films/${slug}`}>
