@@ -1,1 +1,17 @@
 @import "libs";
+
+.home {
+  .slick {
+    &-track {
+      display: flex;
+    }
+
+    &-slide .card {
+      margin: 30px 20px 0;
+    }
+
+    &-list {
+      margin: 0 -20px;
+    }
+  }
+}

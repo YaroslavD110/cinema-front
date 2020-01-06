@@ -1,22 +1,32 @@
 import * as React from "react";
+import Link from "next/link";
 
 interface IFilmCardProps {
   title: string;
   preview: string;
   rating: number;
+  slug: string;
 }
 
 export const FilmCard: React.FC<IFilmCardProps> = props => {
-  const { title, preview, rating } = props;
+  const { title, preview, rating, slug } = props;
 
   return (
-    <div className="card">
+    <div className="card card--big">
       <div className="card__cover">
         <img src={preview} alt={title} />
-        <a href="#" className="card__play">
-          <i className="icon ion-ios-play"></i>
-        </a>
-        <span className="card__rate card__rate--green">{rating}</span>
+        <Link href="/films/[slug]" as={`/films/${slug}`}>
+          <a className="card__play">
+            <i className="icon ion-ios-play"></i>
+          </a>
+        </Link>
+        <span
+          className={`card__rate ${
+            rating >= 7 ? "card__rate--green" : "card__rate--red"
+          }`}
+        >
+          {rating}
+        </span>
       </div>
       <div className="card__content">
         <h3 className="card__title">
