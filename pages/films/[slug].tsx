@@ -1,37 +1,33 @@
 import * as React from "react";
 import Link from "next/link";
+import { format } from "date-fns";
 
 // Components
 import Layout from "@app/components/Layout";
+import { CollapseText } from "app/components/UI/CollapseText";
 
 // Config
 import { apiEndpoint } from "shared/config";
 
-interface ILabel {
-  id: number;
-  label: string;
-  slug: string;
-}
-
-interface IDirector {
-  id: number;
-  name: string;
-  slug: string;
-}
+// Types
+import { IGenre, IDirector, ICountry, IActor } from "shared/types";
 
 interface IFilmPageProps {
   id: number;
   title: string;
-  subtitle?: string;
+  engTitle?: string;
   slug: string;
-  posterUrl: string;
-  videoFrameUrl?: string;
+  posterImg?: string;
+  iframeURL?: string;
+  production?: string;
+  releaseDate?: string;
   description: string;
   IMDBRating: number;
   year: number;
-  genres: ILabel[];
+  genres: IGenre[];
   directors: IDirector[];
-  countries: ILabel[];
+  countries: ICountry[];
+  actors: IActor[];
 }
 
 interface ILink {
@@ -65,10 +61,18 @@ export const FilmPage: NextFC<IFilmPageProps> = props => {
   );
 
   const countries = renderLinksList(
-    props.countries.map(({ id, label, slug }) => ({
+    props.countries.map(({ id, name, slug }) => ({
       id,
-      name: label,
+      name,
       as: `/country/${slug}`
+    }))
+  );
+
+  const actors = renderLinksList(
+    props.actors.map(({ id, name, slug }) => ({
+      id,
+      name,
+      as: `/actor/${slug}`
     }))
   );
 
@@ -86,7 +90,7 @@ export const FilmPage: NextFC<IFilmPageProps> = props => {
                 <div className="row">
                   <div className="col-12 col-sm-5 col-lg-6 col-xl-5">
                     <div className="card__cover">
-                      <img src={props.posterUrl} alt={props.title} />
+                      <img src={props.posterImg} alt={props.title} />
                       <span className="card__rate card__rate--green">
                         {props.IMDBRating}
                       </span>
@@ -99,21 +103,27 @@ export const FilmPage: NextFC<IFilmPageProps> = props => {
                         <li>
                           <span>Director:</span> {directors}
                         </li>
+                        {props.production && (
+                          <li>
+                            <span>Production:</span> {props.production}
+                          </li>
+                        )}
                         <li>
                           <span>Genre:</span> {genres}
                         </li>
                         <li>
-                          <span>Release year:</span> {props.year}
+                          <span>Actors:</span> {actors}
+                        </li>
+                        <li>
+                          <span>Release:</span>{" "}
+                          {props.releaseDate || props.year}
                         </li>
                         <li>
                           <span>Country:</span> {countries}
                         </li>
                       </ul>
                       <div className="b-description_readmore_wrapper js-description_readmore_wrapper">
-                        <div className="card__description b-description_readmore_ellipsis">
-                          {props.description}
-                        </div>
-                        <div className="b-description_readmore_button"></div>
+                        <CollapseText text={props.description} />
                       </div>
                     </div>
                   </div>
@@ -121,10 +131,10 @@ export const FilmPage: NextFC<IFilmPageProps> = props => {
               </div>
             </div>
 
-            {props.videoFrameUrl && (
+            {props.iframeURL && (
               <div className="col-12 col-lg-6">
                 <iframe
-                  src={props.videoFrameUrl}
+                  src={props.iframeURL}
                   width="100%"
                   height="100%"
                   frameBorder="0"
@@ -146,18 +156,23 @@ FilmPage.getInitialProps = async ctx => {
     id: 0,
     title: "Unknown",
     slug: slug as string,
-    posterUrl: "",
+    posterImg: "",
     description: "",
-    IMDBRating: 0,
+    IMDBRating: NaN,
     year: NaN,
     genres: [],
     directors: [],
-    countries: []
+    countries: [],
+    actors: []
   };
 
   try {
     const res = await fetch(`${apiEndpoint}/film/slug/${slug}`);
     const data = await res.json();
+
+    if (data.releaseDate) {
+      data.releaseDate = format(new Date(data.releaseDate), "dd MMMM yyyy");
+    }
 
     response = { ...data };
   } catch (error) {

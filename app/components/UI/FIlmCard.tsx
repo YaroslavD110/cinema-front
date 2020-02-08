@@ -3,8 +3,8 @@ import Link from "next/link";
 
 interface IFilmCardProps {
   title: string;
-  preview: string;
-  rating: number;
+  preview?: string;
+  rating?: number;
   slug: string;
   bigCard?: boolean;
 }
@@ -23,10 +23,10 @@ export const FilmCard: React.FC<IFilmCardProps> = props => {
         </Link>
         <span
           className={`card__rate ${
-            rating >= 7 ? "card__rate--green" : "card__rate--red"
+            !rating || rating <= 7 ? "card__rate--red" : "card__rate--green"
           }`}
         >
-          {rating}
+          {rating || "N/A"}
         </span>
       </div>
       <div className="card__content">

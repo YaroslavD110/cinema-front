@@ -69,7 +69,7 @@ const HomePage: NextFC<IHomePageProps> = props => {
                     key={film.id}
                     slug={film.slug}
                     title={film.title}
-                    preview={film.posterUrl}
+                    preview={film.posterImg}
                     rating={film.IMDBRating}
                   />
                 ))}

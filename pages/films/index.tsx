@@ -118,7 +118,7 @@ export const Catalog: NextFC<ICatalogProps> = props => {
                 <FilmCard
                   title={film.title}
                   slug={film.slug}
-                  preview={film.posterUrl}
+                  preview={film.posterImg}
                   rating={film.IMDBRating}
                 />
               </div>
@@ -149,7 +149,7 @@ Catalog.getInitialProps = async ctx => {
 
     const [res, resCount] = await Promise.all([
       fetch(
-        `${apiEndpoint}/film?limit=${itemsPerCatalogPage}&offset=${(response.currentPage -
+        `${apiEndpoint}/film/minimized?limit=${itemsPerCatalogPage}&offset=${(response.currentPage -
           1) *
           itemsPerCatalogPage}`
       ),
