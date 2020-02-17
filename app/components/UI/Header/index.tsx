@@ -1,7 +1,7 @@
 import * as React from "react";
-import Link from "next/link";
+import Link from "@app/Routing/Link";
 import { observer } from "mobx-react";
-import { Badge, Avatar } from "antd";
+import { Avatar } from "antd";
 
 // Components
 import Menu from "./Menu";
@@ -18,7 +18,7 @@ export const Header: React.FC<IHeaderProps> = props => {
         <div className="row">
           <div className="col-12">
             <div className="header__content">
-              <Link href="/" as="/">
+              <Link slug="home">
                 <a className="header__logo">
                   <img src="/img/logo.png" alt="Logo" />
                 </a>
@@ -82,7 +82,7 @@ export const Header: React.FC<IHeaderProps> = props => {
                     <Avatar icon="user" />
                   </div>
                 ) : (
-                  <Link href="/auth/login">
+                  <Link slug="login">
                     <a className="header__sign-in">
                       <i className="icon ion-ios-log-in"></i>
                       <span>sign in</span>

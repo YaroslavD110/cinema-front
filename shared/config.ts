@@ -1,3 +1,5 @@
+import { RoutingSlugs } from "@app/Routing/index";
+
 export const serverEndpoint = "http://localhost:8080";
 export const apiEndpoint = `${serverEndpoint}/api`;
 
@@ -5,15 +7,19 @@ export const apiEndpoint = `${serverEndpoint}/api`;
 export const itemsPerCatalogPage = 30;
 export const headerMenu: {
   title: string;
-  href: string;
+  slug: RoutingSlugs;
   linkAs?: string;
 }[] = [
   {
     title: "Home",
-    href: "/"
+    slug: "home"
   },
   {
     title: "Catalog",
-    href: "/films"
+    slug: "catalog"
+  },
+  {
+    title: "Admin",
+    slug: "admin"
   }
 ];

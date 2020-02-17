@@ -18,9 +18,12 @@ export class App extends NextApp<IAppProps> {
   static async getInitialProps({ Component, ctx }: AppContext) {
     let pageProps = {};
 
-    if (!process.browser) {
-      const cookies = new Cookies(ctx.req?.headers.cookie);
-      console.log(cookies.getAll());
+    if ((Component as any).isAuthProtected) {
+      if (!process.browser) {
+        const cookies = new Cookies(ctx.req?.headers.cookie);
+      }
+
+      return { pageProps };
     }
 
     if (Component.getInitialProps) {

@@ -6,6 +6,7 @@ import { NextPageContext } from "next";
 
 declare global {
   type NextFC<P = {}, C = {}, CP = {}> = React.FC<P & CP> & {
+    isAuthProtected?: boolean;
     getInitialProps?: (ctx: NextPageContext & C) => Promise<P>;
   };
 
