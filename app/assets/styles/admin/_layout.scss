@@ -1,0 +1,33 @@
+.admin {
+  &-wrap {
+    width: 100%;
+    height: 100%;
+  }
+
+  &-content {
+    padding: 20px;
+    overflow: auto;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px !important;
+
+    &-menu {
+      margin-left: 10px;
+    }
+  }
+
+  &-logo {
+    object-fit: contain;
+    width: 100%;
+    max-height: 44px;
+
+    &-wrap {
+      width: 100%;
+      padding: 10px 20px;
+    }
+  }
+}
