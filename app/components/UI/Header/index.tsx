@@ -1,12 +1,17 @@
 import * as React from "react";
 import Link from "next/link";
+import { observer } from "mobx-react";
+import { Badge, Avatar } from "antd";
 
 // Components
 import Menu from "./Menu";
+import { storeContext } from "@app/stores";
 
 interface IHeaderProps {}
 
 export const Header: React.FC<IHeaderProps> = props => {
+  const { userStore } = React.useContext(storeContext);
+
   return (
     <header className="header">
       <div className="container">
@@ -72,10 +77,18 @@ export const Header: React.FC<IHeaderProps> = props => {
                 </div>
                 {/* end dropdown */}
 
-                <a href="signin.html" className="header__sign-in">
-                  <i className="icon ion-ios-log-in"></i>
-                  <span>sign in</span>
-                </a>
+                {userStore.isAuthenticated ? (
+                  <div className="header__avatar">
+                    <Avatar icon="user" />
+                  </div>
+                ) : (
+                  <Link href="/auth/login">
+                    <a className="header__sign-in">
+                      <i className="icon ion-ios-log-in"></i>
+                      <span>sign in</span>
+                    </a>
+                  </Link>
+                )}
               </div>
               {/* end header auth */}
 
@@ -94,4 +107,4 @@ export const Header: React.FC<IHeaderProps> = props => {
   );
 };
 
-export default Header;
+export default observer(Header);

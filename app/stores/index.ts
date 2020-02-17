@@ -1,5 +1,9 @@
-import MainStore from "./MainStore";
+import { createContext } from "react";
 
-export default {
-  MainStore
-};
+import { MainStore } from "./MainStore";
+import { userStore } from "./UserStore";
+
+export const storeContext = createContext({
+  mainStore: new MainStore(),
+  userStore
+});

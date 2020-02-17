@@ -30,3 +30,8 @@ export interface ICountry {
   name: string;
   slug: string;
 }
+
+export interface IAccessCredentials {
+  accessToken: string;
+  refreshToken: string;
+}

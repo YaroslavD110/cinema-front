@@ -1,11 +1,8 @@
 import * as React from "react";
 import NextApp, { AppContext } from "next/app";
-import { Provider } from "mobx-react";
 import Nprogress from "nprogress";
 import Router from "next/router";
-
-// Stores
-import stores from "@app/stores";
+import Cookies from "universal-cookie";
 
 // Styles
 import "slick-carousel/slick/slick.css";
@@ -20,6 +17,11 @@ interface IAppProps {}
 export class App extends NextApp<IAppProps> {
   static async getInitialProps({ Component, ctx }: AppContext) {
     let pageProps = {};
+
+    if (!process.browser) {
+      const cookies = new Cookies(ctx.req?.headers.cookie);
+      console.log(cookies.getAll());
+    }
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
@@ -37,11 +39,7 @@ export class App extends NextApp<IAppProps> {
   public render() {
     const { Component, pageProps } = this.props;
 
-    return (
-      <Provider {...stores}>
-        <Component {...pageProps} />
-      </Provider>
-    );
+    return <Component {...pageProps} />;
   }
 }
 

@@ -49,7 +49,7 @@ body {
 body {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
-  background-color: #1a191f;
+  background-color: #1a191f !important;
   -webkit-font-smoothing: antialiased;
 }
 button {
