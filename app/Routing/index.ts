@@ -1,4 +1,11 @@
-export type RoutingSlugs = "home" | "login" | "catalog" | "admin" | "error";
+export type RoutingSlugs =
+  | "home"
+  | "login"
+  | "catalog"
+  | "adminHome"
+  | "adminFilmCreate"
+  | "adminFilmsList"
+  | "error";
 
 interface IRoute {
   slug: RoutingSlugs;
@@ -12,7 +19,7 @@ export class Routing {
       path: "/"
     },
     {
-      slug: "admin",
+      slug: "adminHome",
       path: "/admin"
     },
     {
@@ -22,6 +29,14 @@ export class Routing {
     {
       slug: "catalog",
       path: "/catalog"
+    },
+    {
+      slug: "adminFilmCreate",
+      path: "/admin/film/create"
+    },
+    {
+      slug: "adminFilmsList",
+      path: "/admin/film/list"
     },
     {
       slug: "error",

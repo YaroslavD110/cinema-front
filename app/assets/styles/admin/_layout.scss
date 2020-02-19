@@ -30,4 +30,10 @@
       padding: 10px 20px;
     }
   }
+
+  &-table {
+    &__row {
+      cursor: pointer;
+    }
+  }
 }

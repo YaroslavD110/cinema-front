@@ -7,6 +7,25 @@ export interface IFilm {
   genres: IGenre[];
 }
 
+export interface IFilmFull extends IFilm {
+  engTitle: string;
+  year: number;
+  createdAt: string;
+  updatedAt: string;
+  description: string;
+  iframeURL?: string;
+  releaseDate?: string;
+  runtime?: number;
+  IMDBid?: string;
+  IMDBRating?: number;
+  production?: string;
+  posterImg?: string;
+  screenshots: string[];
+  countries: ICountry[];
+  directors: IDirector[];
+  actor: IActor[];
+}
+
 export interface IGenre {
   id: number;
   label: string;

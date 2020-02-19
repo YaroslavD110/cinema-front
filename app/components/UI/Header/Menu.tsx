@@ -1,5 +1,7 @@
 import * as React from "react";
-import Link from "@app/Routing/Link";
+
+// Components
+import Link from "@app/routing/Link";
 
 // Config
 import { headerMenu } from "shared/config";

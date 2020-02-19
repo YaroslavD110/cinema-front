@@ -4,18 +4,21 @@ import { Menu, Icon, Layout, Avatar, Dropdown, Button } from "antd";
 import { observer } from "mobx-react";
 import { storeContext } from "@app/stores";
 import { headerMenu } from "shared/config";
-import Link from "@app/Routing/Link";
+
+// Components
+import Link from "@app/routing/Link";
+import LeftBarMenu from "./LeftBarMenu";
 
 interface IAdminLayoutProps {
   title: string;
 }
 
-const { Header, Sider, Content } = Layout;
+const { Header, Content } = Layout;
 
 const menu = (
   <Menu>
     {headerMenu.map(({ title, slug }) => (
-      <Menu.Item>
+      <Menu.Item key={slug}>
         <Link slug={slug}>
           <a>{title}</a>
         </Link>
@@ -39,26 +42,8 @@ export const AdminLayout: React.FC<IAdminLayoutProps> = props => {
       </Head>
 
       <Layout className="admin-wrap">
-        <Sider trigger={null} collapsible collapsed={collapsed}>
-          <div className="admin-logo-wrap">
-            <img src="/img/logo.png" alt="Logo" className="admin-logo" />
-          </div>
+        <LeftBarMenu collapsed={collapsed} />
 
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-            <Menu.Item key="1">
-              <Icon type="user" />
-              <span>nav 1</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Icon type="video-camera" />
-              <span>nav 2</span>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <Icon type="upload" />
-              <span>nav 3</span>
-            </Menu.Item>
-          </Menu>
-        </Sider>
         <Layout>
           <Header className="admin-header">
             <Icon
