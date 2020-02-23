@@ -1,7 +1,7 @@
 import * as React from "react";
 
 // Context
-import { CreateFilmContext } from "@app/components/AddFilm";
+import { CreateFilmContext } from "@app/components/admin/AddFilm";
 
 interface ISearchStepProps {}
 

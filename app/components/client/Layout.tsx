@@ -2,8 +2,8 @@ import * as React from "react";
 import Head from "next/head";
 
 // UI
-import Header from "app/components/UI/Header";
-import Footer from "components/UI/Footer";
+import Header from "@app/components/client/UI/Header";
+import Footer from "@app/components/client/UI/Footer";
 
 // Styles
 import "slick-carousel/slick/slick.css";

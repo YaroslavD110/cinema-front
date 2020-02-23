@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import AdminLayout from "app/components/AdminLayout";
+import AdminLayout from "@app/components/admin/AdminLayout";
 
 interface IAdminPageProps {}
 

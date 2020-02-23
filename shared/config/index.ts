@@ -4,6 +4,9 @@ import { ITopBarMenuItem, IAdminMenuTopLevelItem } from "./types.d";
 export const serverEndpoint = "http://localhost:8080";
 export const apiEndpoint = `${serverEndpoint}/api`;
 
+// ** Formating **
+export const fullDateFormat = "MM DD YYYY, h:mm:ss";
+
 // ** UI config **
 export const itemsPerCatalogPage = 30;
 export const headerMenu: ITopBarMenuItem[] = [

@@ -1,13 +1,16 @@
 import * as React from "react";
 import { Table, Popover, Button, Icon } from "antd";
-import { format } from "date-fns";
+import moment from "moment";
 import { useRouter } from "next/router";
 
 // Components
-import AdminLayout from "@app/components/AdminLayout";
+import AdminLayout from "@app/components/admin/AdminLayout";
 
 // API
 import { FilmAPI } from "@app/api/Film";
+
+// Config
+import { fullDateFormat } from "shared/config";
 
 // Types
 import { IFilmFull } from "shared/types";
@@ -38,12 +41,12 @@ const columns: ColumnProps<IFilmFull>[] = [
   {
     title: "Updated At",
     dataIndex: "updatedAt",
-    render: updatedAt => format(new Date(updatedAt), "yyyy-MM-d  HH:mm:ss")
+    render: updatedAt => moment(updatedAt).format(fullDateFormat)
   },
   {
     title: "Created At",
     dataIndex: "createdAt",
-    render: createdAt => format(new Date(createdAt), "yyyy-MM-d  HH:mm:ss")
+    render: createdAt => moment(createdAt).format(fullDateFormat)
   },
   {
     render: () => (
@@ -98,7 +101,8 @@ export const AdminFilmsList: NextFC<IAdminFilmsListProps> = props => {
         rowClassName={() => "admin-table__row"}
         onChange={handleChange}
         onRow={film => ({
-          onClick() {
+          onClick(event) {
+            event.stopPropagation();
             router.push("/admin/film/[id]", `/admin/film/${film.id}`);
           }
         })}

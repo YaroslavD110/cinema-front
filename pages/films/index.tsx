@@ -2,8 +2,8 @@ import * as React from "react";
 import Link from "next/link";
 
 // Components
-import Layout from "@app/components/Layout";
-import FilmCard from "@app/components/UI/FilmCard";
+import Layout from "@app/components/client/Layout";
+import FilmCard from "@app/components/client/UI/FilmCard";
 
 // Config
 import { apiEndpoint, itemsPerCatalogPage } from "shared/config";

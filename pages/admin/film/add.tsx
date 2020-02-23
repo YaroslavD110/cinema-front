@@ -2,8 +2,11 @@ import * as React from "react";
 import { Steps } from "antd";
 
 // Components
-import { steps, CreateFilmContextProvider } from "@app/components/AddFilm";
-import AdminLayout from "@app/components/AdminLayout";
+import {
+  steps,
+  CreateFilmContextProvider
+} from "@app/components/admin/AddFilm";
+import AdminLayout from "@app/components/admin/AdminLayout";
 
 interface IAddFilmProps {}
 

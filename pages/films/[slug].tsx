@@ -3,8 +3,8 @@ import Link from "next/link";
 import { format } from "date-fns";
 
 // Components
-import Layout from "@app/components/Layout";
-import { CollapseText } from "app/components/UI/CollapseText";
+import Layout from "@app/components/client/Layout";
+import { CollapseText } from "@app/components/client/UI/CollapseText";
 
 // Config
 import { apiEndpoint } from "shared/config";

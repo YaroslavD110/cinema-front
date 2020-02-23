@@ -1,14 +1,14 @@
 import * as React from "react";
 import { Formik, FormikProps, FormikHelpers } from "formik";
 import { Alert, Spin } from "antd";
+import { observer } from "mobx-react";
 
 // Components
-import Layout from "@app/components/Layout";
+import Layout from "@app/components/client/Layout";
 
 // API
-import { AuthAPI } from "app/api/Auth";
-import { observer } from "mobx-react";
-import { storeContext } from "app/stores";
+import { AuthAPI } from "@app/api/Auth";
+import { storeContext } from "@app/stores";
 
 interface ILoginPageProps {}
 
