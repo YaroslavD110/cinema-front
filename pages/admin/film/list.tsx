@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Table, Popover, Button, Icon } from "antd";
 import { format } from "date-fns";
+import { useRouter } from "next/router";
 
 // Components
 import AdminLayout from "@app/components/AdminLayout";
@@ -50,10 +51,11 @@ const columns: ColumnProps<IFilmFull>[] = [
         placement="left"
         trigger="click"
         content={
-          <div onClick={event => event.stopPropagation()}>
+          <Button.Group>
             <Button>Delete</Button>
-            <Button>Edit</Button>
-          </div>
+            <Button>Details</Button>
+            <Button>Preview</Button>
+          </Button.Group>
         }
       >
         <Button onClick={event => event.stopPropagation()}>
@@ -65,6 +67,7 @@ const columns: ColumnProps<IFilmFull>[] = [
 ];
 
 export const AdminFilmsList: NextFC<IAdminFilmsListProps> = props => {
+  const router = useRouter();
   const [isLoading, setLoadingStatus] = React.useState(false);
   const [data, setData] = React.useState(props.films);
   const [pagination, setPagination] = React.useState<PaginationConfig>({
@@ -96,7 +99,7 @@ export const AdminFilmsList: NextFC<IAdminFilmsListProps> = props => {
         onChange={handleChange}
         onRow={film => ({
           onClick() {
-            console.log(film.id);
+            router.push("/admin/film/[id]", `/admin/film/${film.id}`);
           }
         })}
       />

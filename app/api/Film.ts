@@ -38,6 +38,18 @@ class Film {
       return null;
     }
   }
+
+  public async fetch(id: number) {
+    try {
+      const res = await fetch(`${API_FILM_FETCH}/${id}`);
+      const data = await res.json();
+
+      return filmValidator(data);
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
 }
 
 export const FilmAPI = new Film();

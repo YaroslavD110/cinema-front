@@ -1,0 +1,21 @@
+.edit {
+  &-poster {
+    &__block {
+      .ant-card-body .ant-form-item {
+        display: flex;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &-toprow {
+    display: flex !important;
+    align-items: center;
+  }
+
+  &-label {
+    &__select {
+      width: 100%;
+    }
+  }
+}

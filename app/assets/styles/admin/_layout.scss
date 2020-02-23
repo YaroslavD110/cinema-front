@@ -9,6 +9,18 @@
     overflow: auto;
   }
 
+  &-block {
+    background-color: $admin-block-bg;
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
   &-header {
     display: flex;
     align-items: center;

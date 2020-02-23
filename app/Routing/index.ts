@@ -32,7 +32,7 @@ export class Routing {
     },
     {
       slug: "adminFilmCreate",
-      path: "/admin/film/create"
+      path: "/admin/film/add"
     },
     {
       slug: "adminFilmsList",

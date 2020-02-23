@@ -16,10 +16,10 @@ export const LeftBarMenu: React.FC<ILeftBarMenuProps> = props => {
   const { collapsed } = props;
 
   const renderMenuItems = () => {
-    return adminMenu.map(item =>
+    return adminMenu.map((item, index) =>
       item.subItems ? (
         <Menu.SubMenu
-          key={Routing.getRoute(item.slug).path}
+          key={index}
           title={
             <span className="admin-menu__left-item">
               <Icon type={item.icon} />
@@ -36,14 +36,16 @@ export const LeftBarMenu: React.FC<ILeftBarMenuProps> = props => {
           ))}
         </Menu.SubMenu>
       ) : (
-        <Menu.Item key={Routing.getRoute(item.slug).path}>
-          <Link slug={item.slug}>
-            <a className="admin-menu__left-item">
-              <Icon type={item.icon} />
-              <span>{item.title}</span>
-            </a>
-          </Link>
-        </Menu.Item>
+        item.slug && (
+          <Menu.Item key={Routing.getRoute(item.slug).path}>
+            <Link slug={item.slug}>
+              <a className="admin-menu__left-item">
+                <Icon type={item.icon} />
+                <span>{item.title}</span>
+              </a>
+            </Link>
+          </Menu.Item>
+        )
       )
     );
   };

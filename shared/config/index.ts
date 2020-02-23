@@ -32,11 +32,11 @@ export const adminMenu: IAdminMenuTopLevelItem[] = [
     icon: "video-camera",
     subItems: [
       {
-        title: "List",
+        title: "List all",
         slug: "adminFilmsList"
       },
       {
-        title: "Add",
+        title: "Add new",
         slug: "adminFilmCreate"
       }
     ]

@@ -5,7 +5,7 @@ import { Avatar } from "antd";
 // Components
 import Menu from "./Menu";
 import { storeContext } from "@app/stores";
-import Link from "@pp/routing/Link";
+import Link from "@app/routing/Link";
 
 interface IHeaderProps {}
 

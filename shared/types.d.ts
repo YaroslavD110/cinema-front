@@ -23,7 +23,7 @@ export interface IFilmFull extends IFilm {
   screenshots: string[];
   countries: ICountry[];
   directors: IDirector[];
-  actor: IActor[];
+  actors: IActor[];
 }
 
 export interface IGenre {

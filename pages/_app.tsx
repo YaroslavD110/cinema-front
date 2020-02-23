@@ -5,8 +5,6 @@ import Router from "next/router";
 import Cookies from "universal-cookie";
 
 // Styles
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import "nprogress/nprogress.css";
 import "@app/assets/styles/main.scss";
 
